@@ -140,7 +140,8 @@ def generate_website():
         print("\nNo movies to display on the website.")
         return
 
-    with open(os.path.join("_static", "index_template.html"), "r") as template_file:
+    with open(os.path.join("_static", "index_template.html"),
+              "r") as template_file:
         template_content = template_file.read()
 
     movie_grid = ""
@@ -152,6 +153,7 @@ def generate_website():
                 <img class="movie-poster" src="{movie_info.get('poster_url')}" alt="{movie_info.get('title')} poster" title="{note}">
                 <div class="movie-title">{movie_info.get('title')}</div>
                 <div class="movie-year">{movie_info.get('year')}</div>
+                <div class="movie-rating">Rating: {movie_info.get('rating'):.1f}</div>
             </div>
         </li>
         '''

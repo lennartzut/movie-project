@@ -1,52 +1,92 @@
 body {
-  background: #F5F5F0;
-  color: black;
-  font-family: Monaco;
+    background: #1C1C1C; /* Darker background color */
+    color: #E5E5E5;
+    font-family: "Georgia", serif; /* Updated font for a more elegant look */
 }
 
 .list-movies-title {
-  padding: 10px 0;
-  background: #009B50;
-  color: white;
-  text-align: center;
-  font-size: 16pt;
+    padding: 20px 0;
+    background: #800000;
+    color: #FFD700;
+    text-align: center;
+    font-size: 24pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid #FFD700;
 }
 
 .movie-grid {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the entire grid */
+    max-width: 1200px; /* Optional: Limit the maximum width for better centering */
 }
 
 .movie-grid li {
-  padding: 10px 15px;
-  text-align: left;
+    padding: 20px;
+    text-align: center;
 }
 
 .movie {
-  width: 140px;
+    width: 150px;
+    background: #2E2E2E;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s;
+    border: 2px solid #FFD700;
+    min-height: 360px; /* Ensure consistent frame size to align all movie boxes */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Center align the content inside the movie box */
+}
+
+.movie:hover {
+    transform: scale(1.05);
 }
 
 .movie-title,
 .movie-year {
-  font-size: 0.8em;
-  text-align: center;
+    font-size: 1em;
+    color: #FFD700;
+    margin-top: 10px;
 }
 
 .movie-title {
-  margin-top: 10px;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  /* Display the title with max two lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.4em; /* Reserve space for two lines */
 }
 
 .movie-year {
-  color: #999;
+    font-size: 0.9em;
+    color: #CCCCCC;
 }
 
+.movie-rating {
+    font-size: 0.9em;
+    color: #FF6347;
+    margin-top: 5px;
+}
 
 .movie-poster {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    width: 128px;
-    height: 193px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.4);
+    width: 140px;
+    height: 210px;
+    border: 2px solid #FFD700;
+    border-radius: 5px;
+    margin: auto; /* Center the poster within the container */
+}
+
+.movie-poster:hover {
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.8), 0 10px 20px rgba(255, 215, 0, 0.6);
 }
