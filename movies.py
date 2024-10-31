@@ -3,6 +3,7 @@ import movie_lookup
 import movie_stats
 import movie_storage
 from api import make_api_request
+import os
 
 
 def show_menu():
@@ -18,7 +19,8 @@ def show_menu():
         "7. Search movie",
         "8. Movies sorted by rating",
         "9. Movies sorted by year",
-        "10. Filter movies"
+        "10. Filter movies",
+        "11. Generate website"
     ]
     print("\nMenu:")
     for option in menu_options:
@@ -135,6 +137,40 @@ def update_movie():
         print(f"\nMovie '{title}' successfully updated.")
 
 
+def generate_website():
+    """Generate the website from the movie database"""
+    movies = movie_storage.list_movies()
+    if not movies:
+        print("\nNo movies to display on the website.")
+        return
+
+    with open(os.path.join("_static", "index_template.html"), "r") as template_file:
+        template_content = template_file.read()
+
+    movie_grid = ""
+    for movie_info in movies.values():
+        movie_grid += f'''
+        <li>
+            <div class="movie">
+                <img class="movie-poster" src="{movie_info.get('poster_url')}" alt="{movie_info.get('title')} poster">
+                <div class="movie-title">{movie_info.get('title')}</div>
+                <div class="movie-year">{movie_info.get('year')}</div>
+            </div>
+        </li>
+        '''
+
+    updated_content = template_content.replace("__TEMPLATE_TITLE__",
+                                               "My Movie Collection")
+    updated_content = updated_content.replace(
+        "__TEMPLATE_MOVIE_GRID__", movie_grid)
+
+    with open(os.path.join("_static", "index.html"),
+              "w") as output_file:
+        output_file.write(updated_content)
+
+    print("Website was generated successfully.")
+
+
 def exit_program():
     """Exit the program"""
     print("\nBye!")
@@ -154,6 +190,7 @@ def main():
         8: movie_stats.print_sorted_movies_by_rating,
         9: movie_stats.sort_movies_by_year,
         10: movie_filter.show_filtered_movies_with_input,
+        11: generate_website,
     }
 
     print("********** My Movies Database **********")
