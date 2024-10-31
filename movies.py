@@ -44,6 +44,7 @@ def get_add_movie_info():
             year = movie_data.get("Year")
             rating = movie_data.get("imdbRating")
             poster_url = movie_data.get("Poster")
+            imdb_id = movie_data.get("imdbID")
             if year != "N/A":
                 year = int(year)
             else:
@@ -52,7 +53,7 @@ def get_add_movie_info():
                 rating = float(rating)
             else:
                 rating = 0.0
-            return movie_title, year, rating, poster_url
+            return movie_title, year, rating, poster_url, imdb_id
         else:
             print("\nCould not find the movie in the OMDb "
                   "database, please try again.")
@@ -111,9 +112,9 @@ def show_list_movies():
 
 def add_movie():
     """Add a new movie using the OMDb API"""
-    title, year, rating, poster_url = get_add_movie_info()
+    title, year, rating, poster_url, imdb_id = get_add_movie_info()
     if title:
-        movie_storage.add_movie(title, year, rating, poster_url)
+        movie_storage.add_movie(title, year, rating, poster_url, imdb_id)
         print(f"\nMovie '{title}' successfully added.")
 
 
@@ -147,10 +148,14 @@ def generate_website():
     movie_grid = ""
     for movie_info in movies.values():
         note = movie_info.get('note', '')
+        imdb_id = movie_info.get('imdb_id', '')
+        imdb_link = f"https://www.imdb.com/title/{imdb_id}/" if imdb_id else "#"
         movie_grid += f'''
         <li>
             <div class="movie">
-                <img class="movie-poster" src="{movie_info.get('poster_url')}" alt="{movie_info.get('title')} poster" title="{note}">
+                <a href="{imdb_link}" target="_blank">
+                    <img class="movie-poster" src="{movie_info.get('poster_url')}" alt="{movie_info.get('title')} poster" title="{note}">
+                </a>
                 <div class="movie-title">{movie_info.get('title')}</div>
                 <div class="movie-year">{movie_info.get('year')}</div>
                 <div class="movie-rating">Rating: {movie_info.get('rating'):.1f}</div>
@@ -208,7 +213,7 @@ def main():
                 print("\nInvalid choice, please try again.")
         except ValueError:
             print("\nInvalid input.")
-        print(input("\nPress enter to continue."))
+        print(input("\nPress enter to continue"))
 
 
 if __name__ == "__main__":

@@ -1,45 +1,87 @@
 {
-    "The Silence of the Lambs": {
-        "title": "The Silence of the Lambs",
-        "year": 1991,
-        "rating": 8.6,
-        "poster_url": "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_SX300.jpg"
+    "Gladiator": {
+        "title": "Gladiator",
+        "year": 2000,
+        "rating": 8.5,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0172495"
     },
-    "The Green Mile": {
-        "title": "The Green Mile",
-        "year": 1999,
-        "rating": 8.6,
-        "poster_url": "https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_SX300.jpg",
-        "note": "This movie is my favorite!"
-    },
-    "The Shawshank Redemption": {
-        "title": "The Shawshank Redemption",
+    "The Lion King": {
+        "title": "The Lion King",
         "year": 1994,
-        "rating": 9.3,
-        "poster_url": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_SX300.jpg"
+        "rating": 8.5,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BZGRiZDZhZjItM2M3ZC00Y2IyLTk3Y2MtMWY5YjliNDFkZTJlXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0110357"
     },
-    "The Godfather": {
-        "title": "The Godfather",
-        "year": 1972,
-        "rating": 9.2,
-        "poster_url": "https://m.media-amazon.com/images/M/MV5BYTJkNGQyZDgtZDQ0NC00MDM0LWEzZWQtYzUzZDEwMDljZWNjXkEyXkFqcGc@._V1_SX300.jpg"
+    "Princess Mononoke": {
+        "title": "Princess Mononoke",
+        "year": 1997,
+        "rating": 8.3,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BNjAzODViNGEtMjBkYi00N2U5LWJjNjAtY2U0MGJhZTEwOTU0XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0119698"
     },
-    "The Lord of the Rings": {
-        "title": "The Lord of the Rings",
-        "year": 1978,
-        "rating": 6.2,
-        "poster_url": "https://m.media-amazon.com/images/M/MV5BZmI4ZmIxOGQtMGY2ZS00Y2Y5LTllMDItYzllOWFmMTNlMmY2XkEyXkFqcGc@._V1_SX300.jpg"
+    "Reservoir Dogs": {
+        "title": "Reservoir Dogs",
+        "year": 1992,
+        "rating": 8.3,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BMmMzYjg4NDctYWY0Mi00OGViLWIzMTMtYWNlZGY5ZDJmYjk3XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0105236"
+    },
+    "Dumb and Dumber": {
+        "title": "Dumb and Dumber",
+        "year": 1994,
+        "rating": 7.3,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BNGQxZDA1MmMtYWQ1Ni00NTJmLTljMjgtZWVmODllODVhMzgyXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0109686"
+    },
+    "As Good as It Gets": {
+        "title": "As Good as It Gets",
+        "year": 1997,
+        "rating": 7.7,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BMzBiMWJhYmQtOWYzNS00NjgxLWE5NDItNzZlZDQwODBmODNjXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0119822"
     },
     "Pulp Fiction": {
         "title": "Pulp Fiction",
         "year": 1994,
         "rating": 8.9,
-        "poster_url": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg"
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0110912"
     },
     "Forrest Gump": {
         "title": "Forrest Gump",
         "year": 1994,
         "rating": 8.8,
-        "poster_url": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_SX300.jpg"
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0109830"
+    },
+    "Barbie": {
+        "title": "Barbie",
+        "year": 2023,
+        "rating": 6.8,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BYjI3NDU0ZGYtYjA2YS00Y2RlLTgwZDAtYTE2YTM5ZjE1M2JlXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt1517268"
+    },
+    "Blade Runner": {
+        "title": "Blade Runner",
+        "year": 1982,
+        "rating": 8.1,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BOWQ4YTBmNTQtMDYxMC00NGFjLTkwOGQtNzdhNmY1Nzc1MzUxXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0083658"
+    },
+    "Poltergeist": {
+        "title": "Poltergeist",
+        "year": 1982,
+        "rating": 7.3,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BNzY4MGZkYjgtYTQ2YS00YTlhLWEyMjAtMjZhYzczNTRlM2ZmXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0084516",
+        "note": "Scarry!"
+    },
+    "Beetlejuice": {
+        "title": "Beetlejuice",
+        "year": 1988,
+        "rating": 7.5,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BYjkwNzVlNDEtMTJlNy00OTdlLTljYWItM2RkZmZkYzY3YjM2XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdb_id": "tt0094721"
     }
 }
