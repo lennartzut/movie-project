@@ -41,9 +41,9 @@ def delete_movie(title):
         save_json_file(movies)
 
 
-def update_movie(title, rating):
+def update_movie_notes(title, note):
     """Update the rating of a movie."""
     movies = load_json_file()
     if title in movies:
-        movies[title]['rating'] = rating
+        movies[title]['note'] = note
         save_json_file(movies)

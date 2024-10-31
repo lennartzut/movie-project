@@ -59,16 +59,12 @@ def get_add_movie_info():
 
 
 def get_update_movie_info():
-    """Prompt the user to enter movie title and the update rating"""
+    """Prompt the user to enter movie title and add notes"""
     title = input("\nEnter movie name: ").strip()
     formatted_title = format_title(title)
     if formatted_title in movie_storage.list_movies():
-        while True:
-            rating = float(
-                input("\nEnter new movie rating: ").strip())
-            if 0 < rating < 10:
-                return formatted_title, rating
-            print("Invalid input, please try again.")
+        note = input("\nEnter movie notes: ").strip()
+        return formatted_title, note
     print(f"\nMovie \"{title}\" doesn't exist!")
     return None, None
 
@@ -130,10 +126,10 @@ def delete_movie():
 
 
 def update_movie():
-    """Update a movie's rating"""
-    title, rating = get_update_movie_info()
+    """Update a movie's notes"""
+    title, note = get_update_movie_info()
     if title:
-        movie_storage.update_movie(title, rating)
+        movie_storage.update_movie_notes(title, note)
         print(f"\nMovie '{title}' successfully updated.")
 
 
@@ -149,10 +145,11 @@ def generate_website():
 
     movie_grid = ""
     for movie_info in movies.values():
+        note = movie_info.get('note', '')
         movie_grid += f'''
         <li>
             <div class="movie">
-                <img class="movie-poster" src="{movie_info.get('poster_url')}" alt="{movie_info.get('title')} poster">
+                <img class="movie-poster" src="{movie_info.get('poster_url')}" alt="{movie_info.get('title')} poster" title="{note}">
                 <div class="movie-title">{movie_info.get('title')}</div>
                 <div class="movie-year">{movie_info.get('year')}</div>
             </div>
