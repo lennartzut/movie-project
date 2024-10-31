@@ -1,7 +1,8 @@
-import movie_storage
-import movie_stats
-import movie_lookup
 import movie_filter
+import movie_lookup
+import movie_stats
+import movie_storage
+from api import make_api_request
 
 
 def show_menu():
@@ -25,24 +26,34 @@ def show_menu():
 
 
 def get_add_movie_info():
-    """Prompt the user to enter movie info to add"""
+    """Prompt the user to enter movie title to add"""
     while True:
         title = input("\nEnter new movie name: ").strip()
         if not title:
-            print("\nInput cannot be empty, please try again")
+            print("\nInput cannot be empty, please try again.")
             continue
         formatted_title = format_title(title)
         if formatted_title in movie_storage.list_movies():
             print(f"\nMovie {formatted_title} already exist!")
-            return None, None, None
-        try:
-            year = int(input("\nEnter new movie year: ").strip())
-            rating = float(input("\nEnter new movie rating: "
-                                 "").strip())
-            if 0 < rating < 10:
-                return formatted_title, year, rating
-        except ValueError:
-            print("\nInvalid input, please try again")
+            return None, None, None, None
+        movie_data = make_api_request(formatted_title)
+        if movie_data and movie_data.get("Response") == "True":
+            movie_title = movie_data.get("Title")
+            year = movie_data.get("Year")
+            rating = movie_data.get("imdbRating")
+            poster_url = movie_data.get("Poster")
+            if year != "N/A":
+                year = int(year)
+            else:
+                year = 0
+            if rating != "N/A":
+                rating = float(rating)
+            else:
+                rating = 0.0
+            return movie_title, year, rating, poster_url
+        else:
+            print("\nCould not find the movie in the OMDb "
+                  "database, please try again.")
 
 
 def get_update_movie_info():
@@ -55,7 +66,7 @@ def get_update_movie_info():
                 input("\nEnter new movie rating: ").strip())
             if 0 < rating < 10:
                 return formatted_title, rating
-            print("Invalid input, please try again")
+            print("Invalid input, please try again.")
     print(f"\nMovie \"{title}\" doesn't exist!")
     return None, None
 
@@ -65,7 +76,7 @@ def get_delete_movie_info():
     while True:
         title = input("\nEnter movie name to delete: ").strip()
         if not title:
-            print("\nInput cannot be empty, please try again")
+            print("\nInput cannot be empty, please try again.")
             continue
         formatted_title = format_title(title)
         if formatted_title in movie_storage.list_movies():
@@ -101,10 +112,10 @@ def show_list_movies():
 
 
 def add_movie():
-    """Add a new movie"""
-    title, year, rating = get_add_movie_info()
+    """Add a new movie using the OMDb API"""
+    title, year, rating, poster_url = get_add_movie_info()
     if title:
-        movie_storage.add_movie(title, year, rating)
+        movie_storage.add_movie(title, year, rating, poster_url)
         print(f"\nMovie '{title}' successfully added.")
 
 
@@ -161,7 +172,7 @@ def main():
                 print("\nInvalid choice, please try again.")
         except ValueError:
             print("\nInvalid input.")
-        print(input("\nPress enter to continue "))
+        print(input("\nPress enter to continue."))
 
 
 if __name__ == "__main__":

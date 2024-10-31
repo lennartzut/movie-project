@@ -21,13 +21,14 @@ def list_movies():
     return load_json_file()
 
 
-def add_movie(title, year, rating):
+def add_movie(title, year, rating, poster_url):
     """Add a movie to the database"""
     movies = load_json_file()
     movies[title] = {
                     "title": title,
                     "year": year,
-                    "rating": rating
+                    "rating": rating,
+                    "poster_url": poster_url
                     }
     save_json_file(movies)
 

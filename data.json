@@ -58,5 +58,17 @@
         "title": "The Godfather",
         "year": 1972,
         "rating": 9.2
+    },
+    "The Silence of the Lambs": {
+        "title": "The Silence of the Lambs",
+        "year": 1991,
+        "rating": 8.6,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    "The Green Mile": {
+        "title": "The Green Mile",
+        "year": 1999,
+        "rating": 8.6,
+        "poster_url": "https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_SX300.jpg"
     }
 }
