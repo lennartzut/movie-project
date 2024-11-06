@@ -1,5 +1,5 @@
+from .api import make_api_request
 import os
-from api import make_api_request
 
 
 class MovieApp:
@@ -7,6 +7,7 @@ class MovieApp:
         self._storage = storage
 
     def _command_list_movies(self):
+        """List all movies"""
         movies = self._storage.list_movies()
         if movies:
             print(f"\n{len(movies)} movies in total")
@@ -18,6 +19,7 @@ class MovieApp:
             print("\nNo movies in the database.")
 
     def _command_add_movie(self):
+        """Add a new movie using the OMDb API"""
         title, year, rating, poster_url, imdb_id = (
             self.get_add_movie_info())
         if title:
@@ -26,18 +28,21 @@ class MovieApp:
             print(f"\nMovie '{title}' successfully added.")
 
     def _command_delete_movie(self):
+        """Delete a movie"""
         title = self.get_delete_movie_info()
         if title:
             self._storage.delete_movie(title)
             print(f"\nMovie '{title}' successfully deleted.")
 
     def _command_update_movie(self):
+        """Update a movie's notes"""
         title, note = self.get_update_movie_info()
         if title:
             self._storage.update_movie(title, note)
             print(f"\nMovie '{title}' successfully updated.")
 
     def _command_movie_stats(self):
+        """Print statistics about the movies in the database"""
         sorted_movies = self.sort_movies_by_rating()
         valid_movies = {k: v for k, v in sorted_movies.items() if
                         v.get("rating") > 0}
@@ -57,6 +62,7 @@ class MovieApp:
               f"{worst_movie_info.get('rating')}")
 
     def _command_random_movie(self):
+        """Print a random movie and its rating"""
         movies = self._storage.list_movies()
         valid_movies = {k: v for k, v in movies.items() if v.get(
             "rating") > 0}
@@ -71,6 +77,8 @@ class MovieApp:
               f"it's rated {movie_info['rating']:.1f}")
 
     def _command_search_movie(self):
+        """Ask the user to enter a part of a movie name and search
+        the database"""
         movies = self._storage.list_movies()
         if not movies:
             print("\nNo movies in the database to search.")
@@ -92,6 +100,7 @@ class MovieApp:
                   f"please try again.")
 
     def _command_sort_movies_by_rating(self):
+        """Return a sorted dictionary of movies by rating"""
         sorted_movies = self.sort_movies_by_rating()
         if not sorted_movies:
             print("\nNo movies in the database to sort by rating.")
@@ -100,6 +109,7 @@ class MovieApp:
             print(f"{movie_title}: {movie_info['rating']:.1f}")
 
     def _command_sort_movies_by_year(self):
+        """Sort the movies by year and print them"""
         movies = self._storage.list_movies()
         if not movies:
             print("\nNo movies in the database to sort by year.")
@@ -112,6 +122,8 @@ class MovieApp:
                   f"{movie_info.get('rating'):.1f}")
 
     def _command_filter_movies(self):
+        """Filter and display movies based on user input for
+        rating and year range"""
         movies = self._storage.list_movies()
         minimal_rating = self.get_minimal_rating()
         start_year = self.get_start_year()
@@ -130,13 +142,18 @@ class MovieApp:
                 print(f"{title} ({year}): {rating:.1f}")
 
     def _generate_website(self):
+        """Generate the website from the movie database"""
         movies = self._storage.list_movies()
         if not movies:
             print("\nNo movies to display on the website.")
             return
 
-        with open(os.path.join("_static", "index_template.html"),
-                  "r") as template_file:
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(
+            __file__)))
+        template_path = os.path.join(base_dir, "static",
+                                   "index_template.html")
+
+        with open(template_path, "r") as template_file:
             template_content = template_file.read()
 
         movie_grid = ""
@@ -169,10 +186,10 @@ class MovieApp:
         updated_content = updated_content.replace(
             "__TEMPLATE_MOVIE_GRID__", movie_grid)
 
-        with (open(os.path.join("_static", "index.html"), "w") as
-              output_file):
-            output_file.write(updated_content)
+        output_path = os.path.join(base_dir, "static", "index.html")
 
+        with open(output_path, "w") as output_file:
+            output_file.write(updated_content)
         print("Website was generated successfully.")
 
     def show_menu(self):
@@ -196,6 +213,7 @@ class MovieApp:
             print(option)
 
     def run(self):
+        """Main function to run the program"""
         menu_functions = {
             0: self.exit_program,
             1: self._command_list_movies,
@@ -230,6 +248,7 @@ class MovieApp:
             input("\nPress enter to continue")
 
     def exit_program(self):
+        """Exit the program"""
         print("\nBye!")
 
     def get_add_movie_info(self):

@@ -1,13 +1,10 @@
-from movie_app import MovieApp
-from storage_json import StorageJson
+from movie_app import MovieApp, StorageCsv, StorageJson
 
 
 def main():
     """Main function to initialize and run the movie app."""
-    storage = StorageJson("data.json")
-
+    storage = StorageCsv('data/movies.csv')
     app = MovieApp(storage)
-
     app.run()
 
 
