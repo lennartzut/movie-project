@@ -7,12 +7,17 @@ class StorageJson(IStorage):
         self.file_path = file_path
 
     def load(self):
-        """Load database"""
-        with open(self.file_path, "r") as fileobj:
-            return json.load(fileobj)
+        """Load database from JSON"""
+        try:
+            with open(self.file_path, "r") as fileobj:
+                movies = json.load(fileobj)
+        except json.JSONDecodeError:
+            self.save({})
+            return {}
+        return movies
 
     def save(self, data):
-        """Save database"""
+        """Save database to JSON"""
         with open(self.file_path, "w") as fileobj:
             json.dump(data, fileobj, indent=4)
 
@@ -21,7 +26,7 @@ class StorageJson(IStorage):
         return self.load()
 
     def add_movie(self, title, year, rating, poster_url, imdb_id):
-        """Add a movie to the database"""
+        """Add a movie to the JSON database"""
         movies = self.load()
         movies[title] = {
             "title": title,
@@ -29,18 +34,19 @@ class StorageJson(IStorage):
             "rating": rating,
             "poster_url": poster_url,
             "imdb_id": imdb_id,
+            "note": ""
         }
         self.save(movies)
 
     def delete_movie(self, title):
-        """Delete a movie from the database"""
+        """Delete a movie from the JSON database"""
         movies = self.load()
         if title in movies:
             del movies[title]
             self.save(movies)
 
     def update_movie(self, title, note):
-        """Update movie notes"""
+        """Update movie notes in the JSON database"""
         movies = self.load()
         if title in movies:
             movies[title]['note'] = note
